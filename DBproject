@@ -1,0 +1,25 @@
+
+CREATE OR REPLACE TYPE Building_T AS OBJECT
+(bld_id VARCHAR2(10),
+bld_name VARCHAR2(20),
+bld_location VARCHAR2(10),
+bld_level NUMBER,
+in_campus REF Campus_T,
+for_faculty REF Faculty_T,
+MEMBER PROCEDURE show_bld_details)
+/
+CREATE CLUSTER Building_Cluster
+(bld_id VARCHAR2(10));
+CREATE TABLE Building OF Building_T
+(bld_id NOT NULL,
+PRIMARY KEY (bld_id))
+CLUSTER Building_Cluster(bld_id);
+
+CREATE OR REPLACE TYPE BODY Building_T AS
+MEMBER PROCEDURE show_bld_details IS
+BEGIN
+INSERT INTO Building_Details
+VALUES (self.bld_name, self.bld_location);
+END show_bld_details;
+END;
+/
