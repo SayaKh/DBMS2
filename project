@@ -17,11 +17,3 @@ CREATE OR REPLACE TYPE School_T AS object
 
 CREATE OR REPLACE TYPE School_Table_T AS TABLE OF
 School_T
-CREATE OR REPLACE TYPE Department_T AS OBJECT
-(dept_id VARCHAR2(12),
- dept_name VARCHAR2(20),
- dept_head VARCHAR2(20),
- dept_prof Professors)
-)
-CREATE OR REPLACE TYPE Department_Table_T AS TABLE OF
-Department_T
