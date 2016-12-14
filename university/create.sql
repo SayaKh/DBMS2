@@ -86,8 +86,8 @@ CREATE TYPE BODY Degree_T AS
       all_degrees INTEGER;
        BEGIN 
         SELECT COUNT(*) AS All_Students INTO 
-        all_degrees FROM Degrees d , Enrolls e
-        WHERE e.degree = REF(d) GROUP BY d.deg_id;
+        all_degrees FROM Degrees d , Enrolls_In e
+        WHERE e.degree = REF(d) AND d.deg_id = SELF.deg_id GROUP BY d.deg_id;
    
         INSERT INTO Degree_Records VALUES 
         (SELF.deg_id , SELF.deg_name
